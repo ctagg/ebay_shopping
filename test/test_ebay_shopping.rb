@@ -50,7 +50,7 @@ class TestEbayShopping < Test::Unit::TestCase
   def test_should_have_callname_and_call_params_accessors
     ebay = EbayShopping::Request.new(:find_items, {:first_param => "foo", :second_param => "bar"})
     assert_equal :find_items, ebay.callname
-    assert_equal ({:first_param => "foo", :second_param => "bar"}), ebay.call_params
+    assert_equal({:first_param => "foo", :second_param => "bar"}, ebay.call_params)
   end
   
   def test_should_have_app_id_affiliate_id_and_affiliate_partner_accessors_set_from_config_params
@@ -337,7 +337,7 @@ class TestEbayShopping < Test::Unit::TestCase
   
   def test_should_make_items_original_hash_available_as_all_params
     item = EbayShopping::GenericItem.new("ItemID" => "foo123", "Title" => "Dummy ebay item")
-    assert_equal ({"ItemID" => "foo123", "Title" => "Dummy ebay item"}), item.all_params
+    assert_equal({"ItemID" => "foo123", "Title" => "Dummy ebay item"}, item.all_params)
   end
   
   def test_should_allow_access_to_original_hash_via_square_brackets

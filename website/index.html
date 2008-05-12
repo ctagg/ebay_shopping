@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      ebay_shopping
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1>ebay_shopping</h1>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/ebay_shopping"; return false'>
+      <p>Get Version</p>
+      <a href="http://rubyforge.org/projects/ebay_shopping" class="numbers">0.1.0</a>
+    </div>
+    <h1>&#x2192; &#8216;ebay_shopping&#8217;</h1>
+
+
+	<h2>What</h2>
+
+
+	<p>A Ruby library for the fast-and-simple ebay Shopping <span class="caps">API</span>. For details see the Introduction, or the <span class="caps">README</span> file. There&#8217;s also a blog post detailing usage at: <a href="http://pushrod.wordpress.com/2008/01/13/a-rubyonrails-library-for-the-ebay-shopping-api/">http://pushrod.wordpress.com/2008/01/13/a-rubyonrails-library-for-the-ebay-shopping-api/</a></p>
+
+
+	<p>Unlike the trading <span class="caps">API</span> (<a href="http://developer.ebay.com/products/trading/">http://developer.ebay.com/products/trading/</a>), the shopping <span class="caps">API</span> is only for retrieval of information, not for posting items, or bidding on them.</p>
+
+
+	<p>If you need that sort of thing, check out Cody Fauser&#8217;s gem for the trading <span class="caps">API</span> (<a href="http://code.google.com/p/ebay/">http://code.google.com/p/ebay/</a>). If you don&#8217;t, the Shopping <span class="caps">API</span> is simpler, leaner, and quite a bit faster too.</p>
+
+
+	<p>ebay_shopping was developed by <a href="http://autopendium.com">Chris Taggart for Autopendium :: Stuff about old cars</a>, a classic car community site. It&#8217;s still in development, and news of updates will be posted at <a href="http://pushrod.wordpress.com">http://pushrod.wordpress.com</a></p>
+
+
+	<h2>Installing</h2>
+
+
+	<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">ebay_shopping</span></pre></p>
+
+
+	<p>Then, in the configuration section of your application, initialize the EbayShopping::Request config_params, by passing either a <span class="caps">YAML</span> file with values for different environments, or with a hash containing your app_id, affiliate_code etc.</p>
+
+
+	<p>In a Rails application, for example, you&#8217;d probably put a ebay.yml file in your config folder and then in environment.rb:
+<pre class='syntax'><span class="constant">EbayShopping</span><span class="punct">::</span><span class="constant">Request</span><span class="punct">.</span><span class="ident">config_params</span><span class="punct">(&quot;</span><span class="string"><span class="expr">#{RAILS_ROOT}</span>/config/ebay.yml</span><span class="punct">&quot;,</span> <span class="constant">RAILS_ENV</span><span class="punct">)</span></pre></p>
+
+
+	<p>In the console (for example) you&#8217;d probably pass a hash like so:
+<pre class='syntax'><span class="constant">EbayShopping</span><span class="punct">::</span><span class="constant">Request</span><span class="punct">.</span><span class="ident">config_params</span><span class="punct">({</span><span class="symbol">:app_id</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">my_app_id</span><span class="punct">&quot;,</span> <span class="symbol">:default_site_id</span> <span class="punct">=&gt;&quot;</span><span class="string">3</span><span class="punct">&quot;})</span></pre></p>
+
+
+	<p>See below for more info of the config params</p>
+
+
+	<h2>The basics</h2>
+
+
+	<p><pre class='syntax'>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">ebay_shopping</span><span class="punct">'</span>
+
+<span class="ident">request</span> <span class="punct">=</span> <span class="constant">EbayShopping</span><span class="punct">::</span><span class="constant">Request</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:find_items</span><span class="punct">,</span> <span class="punct">{</span><span class="symbol">:query_keywords</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">chevrolet camaro</span><span class="punct">&quot;})</span> <span class="comment"># use &quot;ruby-ized&quot; version of Ebay API calls and params</span>
+
+<span class="ident">response</span> <span class="punct">=</span> <span class="ident">request</span><span class="punct">.</span><span class="ident">response</span>
+
+<span class="ident">items_for_sale</span> <span class="punct">=</span> <span class="ident">response</span><span class="punct">.</span><span class="ident">items</span>
+
+<span class="ident">items_for_sale</span><span class="punct">.</span><span class="ident">first</span><span class="punct">.</span><span class="ident">title</span> <span class="comment"># =&gt; &quot;Chevrolet Camaro&quot;</span>
+</pre></p>
+
+
+	<p>items_for_sale.first.view_item_url_for_natural_search # =&gt; &#8220;http://cgi.ebay.com/Chevrolet-Camaro_W0QQitemZ290197239377QQcategoryZ6161QQcmdZViewItemQQ&#8221;</p>
+
+
+	<p>items_for_sale.first.gallery_url # =&gt; &#8220;http://thumbs.ebaystatic.com/pict/290197239377.jpg&#8221;</p>
+
+
+	<p>items_for_sale.first.converted_current_price.to_s # =&gt; &#8221;$38000.00&#8221; 
+...etc</p>
+
+
+	<h2>Demonstration of usage</h2>
+
+
+	<p>For more methods and more details see the test suite, the comments with the class and method definitions, or wait for me to write more stuff.</p>
+
+
+	<h2>Forum</h2>
+
+
+	<p><a href="http://groups.google.com/group/ebay_shopping">http://groups.google.com/group/ebay_shopping</a></p>
+
+
+	<p><span class="caps">TODO</span> &#8211; create Google Group &#8211; ebay_shopping</p>
+
+
+	<h2>How to submit patches</h2>
+
+
+	<p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups">8b: Submit patch to Google Groups</a>, use the Google Group above.</p>
+
+
+	<p>The trunk repository is <code>svn://rubyforge.org/var/svn/ebay_shopping/trunk</code> for anonymous access.</p>
+
+
+	<p><span class="caps">OOOORRRR</span></p>
+
+
+	<p>You can fetch the source from either:</p>
+
+
+	<ul>
+	<li>rubyforge: <span class="caps">MISSING IN ACTION</span></li>
+	</ul>
+
+
+	<p><span class="caps">TODO</span> &#8211; You can not created a RubyForge project, OR have not run <code>rubyforge config</code>
+yet to refresh your local rubyforge data with this projects&#8217; id information.</p>
+
+
+	<p>When you do this, this message will magically disappear!</p>
+
+
+	<p>Or you can hack website/index.txt and make it all go away!!</p>
+
+
+	<ul>
+	<li>github: <a href="http://github.com/ctagg/ebay_shopping/tree/master">http://github.com/ctagg/ebay_shopping/tree/master</a></li>
+	</ul>
+
+
+<pre>git clone git://github.com/ctagg/ebay_shopping.git</pre>
+
+	<h3>Build and test instructions</h3>
+
+
+<pre>cd ebay_shopping
+rake test
+rake install_gem</pre>
+
+	<h2>License</h2>
+
+
+	<p>This code is free to use under the terms of the <span class="caps">MIT</span> license.</p>
+
+
+	<h2>Contact</h2>
+
+
+	<p>Comments are welcome. Send an email to <a href="mailto:chris.taggart@pushrodmedia.co.uk">Chris Taggart</a> email via the <a href="http://groups.google.com/group/ebay_shopping">forum</a></p>
+    <p class="coda">
+      <a href="http://pushrod.wordpress.com">Chris Taggart</a>, 12th May 2008<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
+</html>

@@ -4,7 +4,7 @@ AUTHOR = 'Chris Taggart'  # can also be an array of Authors
 EMAIL = "chris.taggart@pushrodmedia.co.uk"
 DESCRIPTION = "A Ruby library for Ebay's lightweight Shopping API"
 GEM_NAME = 'ebay_shopping' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = 'ebay_shopping' # The unix name for your project
+RUBYFORGE_PROJECT = 'ebayshopping' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
@@ -13,7 +13,7 @@ EXTRA_DEPENDENCIES = [
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
-RUBYFORGE_USERNAME = "unknown"
+RUBYFORGE_USERNAME = "ctagg"
 def rubyforge_username
   unless @config
     begin

@@ -63,7 +63,7 @@ module EbayShopping
       @call_params          = params
     end
     
-    # Get config params from YAML config file stored in app config folder
+    # Get config params from YAML config file
     def self.config_params(yaml_file=nil, env=nil)
       return @@config_params if @@config_params
       all_params = YAML.load_file(yaml_file)
