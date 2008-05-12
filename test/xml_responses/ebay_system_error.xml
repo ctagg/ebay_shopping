@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+ <Ack>Failure</Ack>
+ <Errors>
+  <ShortMessage>Some ebay system error</ShortMessage>
+  <LongMessage>There has been a system error. Whoops.</LongMessage>
+  <ErrorCode>1.22</ErrorCode>
+  <SeverityCode>Error</SeverityCode>
+  <ErrorParameters ParamID="0">
+   <Value>ItemSort</Value>
+  </ErrorParameters>
+  <ErrorClassification>SystemError</ErrorClassification>
+ </Errors>
+ <Build>e543_core_Bundled_5775563_R1</Build>
+ <Version>543</Version>
+</FindItemsResponse>

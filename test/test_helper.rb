@@ -1,0 +1,6 @@
+require 'test/unit'
+require 'rubygems'
+require 'yaml'
+require 'mocha'
+require 'stubba'
+require File.dirname(__FILE__) + '/../lib/ebay_shopping'

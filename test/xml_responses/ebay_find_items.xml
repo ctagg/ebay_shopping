@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <FindItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+   <Timestamp>2008-01-01T13:17:14.613Z</Timestamp>
+   <Ack>Success</Ack>
+   <Build>e543_core_Bundled_5775563_R1</Build>
+   <Version>543</Version>
+   <Item>
+    <ItemID>290194581402</ItemID>
+    <EndTime>2008-01-01T14:25:23.000Z</EndTime>
+    <ViewItemURLForNaturalSearch>http://cgi.ebay.com/1949-CADILLAC-COUPE-DeVILLE-WHITE-DIECAST-1-43-SCALE_W0QQitemZ290194581402QQcategoryZ223QQcmdZViewItem</ViewItemURLForNaturalSearch>
+    <ListingType>Chinese</ListingType>
+    <GalleryURL>http://thumbs.ebaystatic.com/pict/290194581402.jpg</GalleryURL>
+    <PrimaryCategoryID>223</PrimaryCategoryID>
+    <PrimaryCategoryName>Toys &amp; Hobbies:Diecast, Toy Vehicles:Cars, Trucks-Diecast:Other</PrimaryCategoryName>
+    <BidCount>0</BidCount>
+    <ConvertedCurrentPrice currencyID="USD">9.99</ConvertedCurrentPrice>
+    <ListingStatus>Active</ListingStatus>
+    <TimeLeft>PT1H8M9S</TimeLeft>
+    <Title>1949 CADILLAC COUPE DeVILLE- WHITE DIECAST 1:43 SCALE</Title>
+    <ShippingCostSummary>
+     <ShippingServiceCost currencyID="USD">4.99</ShippingServiceCost>
+     <ShippingType>Flat</ShippingType>
+    </ShippingCostSummary>
+   </Item>
+   <Item>
+    <ItemID>160194251709</ItemID>
+    <EndTime>2008-01-01T16:14:46.000Z</EndTime>
+    <ViewItemURLForNaturalSearch>http://cgi.ebay.com/1949-Cadillac-Carburetor-Carter-2-Barrel_W0QQitemZ160194251709QQcategoryZ33550QQcmdZViewItem</ViewItemURLForNaturalSearch>
+    <ListingType>Chinese</ListingType>
+    <GalleryURL>http://thumbs.ebaystatic.com/pict/160194251709.jpg</GalleryURL>
+    <PrimaryCategoryID>33550</PrimaryCategoryID>
+    <PrimaryCategoryName>eBay Motors:Parts &amp; Accessories:Car &amp; Truck Parts:Air Intake &amp; Fuel Delivery:Carburetors</PrimaryCategoryName>
+    <BidCount>1</BidCount>
+    <ConvertedCurrentPrice currencyID="USD">39.95</ConvertedCurrentPrice>
+    <ListingStatus>Active</ListingStatus>
+    <TimeLeft>PT2H57M32S</TimeLeft>
+    <Title>1949 Cadillac  Carburetor - Carter 2 Barrel</Title>
+    <ShippingCostSummary>
+     <ShippingServiceCost currencyID="USD">12.0</ShippingServiceCost>
+     <ShippingType>Flat</ShippingType>
+    </ShippingCostSummary>
+   </Item>
+   <TotalItems>117</TotalItems>
+   <ItemSearchURL>http://search.ebay.com/ws/search/SaleSearch?DemandData=1&amp;fsop=32&amp;satitle=cadillac+1949</ItemSearchURL>
+  </FindItemsResponse>

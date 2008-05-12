@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <FindItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+   <Timestamp>2008-01-01T18:14:16.940Z</Timestamp>
+   <Ack>Success</Ack>
+   <Build>e543_core_Bundled_5775563_R1</Build>
+   <Version>543</Version>
+   <TotalItems>0</TotalItems>
+   <ItemSearchURL>http://search.ebay.com/ws/search/SaleSearch?DemandData=1&amp;fsop=32&amp;satitle=codillac+1949</ItemSearchURL>
+  </FindItemsResponse>

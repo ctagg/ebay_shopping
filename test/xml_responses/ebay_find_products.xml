@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+	<FindProductsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+		<Timestamp>2007	2	2T18:11:26.188Z</Timestamp> 
+		<Ack>Success</Ack> 
+		<Build>e539_core_Bundled_5643128_R1</Build> 
+		<Version>539</Version> 
+		<ApproximatePages>210</ApproximatePages> 
+		<MoreResults>true</MoreResults> 
+		<PageNumber>1</PageNumber> 
+	<Product>
+		<DomainName>DVDs</DomainName> 
+		<DetailsURL>http://syicatalogs.ebay.com/ws/eBayISAPI.dll?PageSyiProductDetails&IncludeAttributes=1&ShowAttributesTable=1&ProductMementoString=88456:2:1049:1489297318:138039228:f19efe1397d028d65cd2b81e1112fcfa:1:1:1:1382045716</DetailsURL> 
+		<DisplayStockPhotos>true</DisplayStockPhotos> 
+		<ProductID type="Reference">62923188</ProductID> 
+		<ProductID type="UPC">012569593268</ProductID> 
+	<ItemSpecifics>
+	<NameValueList>
+		<Name>Rating</Name> 
+		<Value>PG	3</Value> 
+		</NameValueList>
+	<NameValueList>
+		<Name>Leading Role</Name> 
+		<Value>Daniel Radcliffe</Value> 
+		<Value>Emma Watson</Value> 
+		<Value>Rupert Grint</Value> 
+		</NameValueList>
+	<NameValueList>
+		<Name>Format</Name> 
+		<Value>DVD</Value> 
+		</NameValueList>
+		</ItemSpecifics>
+		<ReviewCount>2</ReviewCount> 
+		<StockPhotoURL>http://i11.ebayimg.com/08/c/000/77/43/ade9_6.JPG</StockPhotoURL> 
+		<Title>Harry Potter and the Order of the Phoenix (2007, DVD)</Title> 
+		</Product>
+	<Product>
+		<DomainName>Children's Books</DomainName> 
+		<DetailsURL>http://syicatalogs.ebay.com/ws/eBayISAPI.dll?PageSyiProductDetails&IncludeAttributes=1&ShowAttributesTable=1&ProductMementoString=88519:2:1055:1565202560:138165260:59e578afaa39f41a8361fe9b641f3352:1:1:1:1378670148</DetailsURL> 
+		<DisplayStockPhotos>true</DisplayStockPhotos> 
+		<ProductID type="Reference">59049480</ProductID> 
+		<ProductID type="ISBN">0545010225</ProductID> 
+		<ProductID type="ISBN">9780545010221</ProductID> 
+	<ItemSpecifics>
+	<NameValueList>
+		<Name>Binding</Name> 
+		<Value>Hardcover</Value> 
+		</NameValueList>
+	<NameValueList>
+		<Name>Author</Name> 
+		<Value>J. K. Rowling</Value> 
+		</NameValueList>
+		</ItemSpecifics>
+		<ReviewCount>136</ReviewCount> 
+		<StockPhotoURL>http://i20.ebayimg.com/05/c/000/77/3c/71fc_6.JPG</StockPhotoURL> 
+		<Title>Harry Potter and the Deathly Hallows by J. K. Rowling (2007)</Title> 
+	</Product>
+	<TotalProducts>420</TotalProducts> 
+</FindProductsResponse>

@@ -1,0 +1,27 @@
+== 0.1.0 2008-05-12
+
+* 1 major enhancement:
+  * Converted to gem from Rails plugin
+
+March 2
+	* Backed out of r12. No longer raise TimeoutError when error code 1.23 return. Now re-attempts call, then returns SystemError
+
+* Jan 20
+	* Raise TimeoutError when ebay internal timeout error (Error code 1.23)
+
+* January 13
+	* Changed instance variable used in FindProductsResponse#products to @products
+
+* January 12, 2008
+	* Added support for FindProducts call
+	* Added GenericItem class from which Item class and new Product class inherit
+
+* January 11, 2008
+	* Tweaked error handling so ebay's error response is passed to ebay_error_raised hook
+	* Made Request#check_error_cache a protected method
+	* Changed ebay API version to 547
+	* Cached error checking now done before checking for cached response
+	* Changed name of cached_response to cached_xml_response. cached_response is better name for a public method, which might return Response object, if there's a cached_xml_response, nil otherwise. Allows loading of pages to be speeded up, with queries perhaps being triggered on demand (and then cached) or by js 
+
+* January 10, 2008
+	* First checkin on plugin

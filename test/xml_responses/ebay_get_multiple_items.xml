@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetMultipleItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+	<Timestamp>2007-07-06T21:36:26.968Z</Timestamp>
+	<Ack>Success</Ack>
+	<Build>e527_core_APILW_4863605_R1</Build>
+	<Item>
+		<ItemID>190000456297</ItemID>
+		<BuyItNowAvailable>false</BuyItNowAvailable>
+		<EndTime>2009-07-25T09:27:34.000Z</EndTime>
+		<ViewItemURLForNaturalSearch>http://cgi.ebay.com/harry-potter-gwq-minimium_W0QQitemZ190000456297QQcategoryZ617QQcmdZViewItem</ViewItemURLForNaturalSearch>
+		<Location>qwg</Location>
+		<PrimaryCategoryID>617</PrimaryCategoryID>
+		<PrimaryCategoryName>DVDs &amp; Movies:DVD, HD DVD &amp; Blu-ray</PrimaryCategoryName>
+		<BidCount>0</BidCount>
+		<ConvertedCurrentPrice currencyID="USD">1.0</ConvertedCurrentPrice>
+		<ListingStatus>Active</ListingStatus>
+		<TimeLeft>P729DT11H49M7S</TimeLeft>
+		<Title>harry potter gwq minimium</Title>
+	</Item>
+	<Item>
+		<ItemID>280000052600</ItemID>
+		<EndTime>2009-07-25T10:01:59.000Z</EndTime>
+		<ViewItemURLForNaturalSearch>http://cgi.ebay.com/faridakp-blacck-harry-potter_W0QQitemZ280000052600QQcategoryZ63889QQcmdZViewItem</ViewItemURLForNaturalSearch>
+		<Location>San Jose, California</Location>
+		<GalleryURL>http://thumbs.ebaystatic.com/pict/280000052600.jpg</GalleryURL>
+		<PictureURL>http://i3.ebayimg.com/05/i/07/62/4f/9b_1_b.JPG</PictureURL>
+		<PrimaryCategoryID>63889</PrimaryCategoryID>
+		<PrimaryCategoryName>Clothing, Shoes &amp; Accessories:Women's Shoes</PrimaryCategoryName>
+		<BidCount>0</BidCount>
+		<ConvertedCurrentPrice currencyID="USD">15.0</ConvertedCurrentPrice>
+		<ListingStatus>Active</ListingStatus>
+		<TimeLeft>P729DT12H23M32S</TimeLeft>
+		<Title>faridakp blacck harry potter</Title>
+	</Item>
+	<Item>
+		<ItemID>9600579283</ItemID>
+		<EndTime>2009-07-25T10:03:56.000Z</EndTime>
+		<ViewItemURLForNaturalSearch>http://cgi.ebay.com/Harry-Potter-Literature-Guide-2000_W0QQitemZ9600579283QQcategoryZ279QQcmdZViewItem</ViewItemURLForNaturalSearch>
+		<Location>San Jose</Location>
+		<PrimaryCategoryID>279</PrimaryCategoryID>
+		<PrimaryCategoryName>Books:Children's Books</PrimaryCategoryName>
+		<BidCount>0</BidCount>
+		<ConvertedCurrentPrice currencyID="USD">21.85</ConvertedCurrentPrice>
+		<ListingStatus>Active</ListingStatus>
+		<TimeLeft>P729DT12H25M29S</TimeLeft>
+		<Title>Harry Potter Literature Guide (2000)</Title>
+	</Item>
+</GetMultipleItemsResponse>

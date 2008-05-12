@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+ <Ack>Failure</Ack>
+ <Errors>
+  <ShortMessage>The request timed out.</ShortMessage>
+  <LongMessage>The request timed out.</LongMessage>
+  <ErrorCode>1.23</ErrorCode>
+  <SeverityCode>Error</SeverityCode>
+  <ErrorClassification>SystemError</ErrorClassification>
+ </Errors>
+ <Build>e543_core_Bundled_5775563_R1</Build>
+ <Version>543</Version>
+</FindItemsResponse>

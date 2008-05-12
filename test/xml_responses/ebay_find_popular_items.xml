@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<FindPopularItemsResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+  <Timestamp>2007-09-10T22:10:57.546Z</Timestamp> 
+  <Ack>Success</Ack> 
+  <Build>e531_core_APILW2_5302589_R1</Build> 
+  <Version>531</Version> 
+  <ItemArray>
+    <Item>
+      <ItemID>330000921552</ItemID>
+      <EndTime>2007-09-14T23:22:59.000Z</EndTime>
+      <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Harry-Potter-And-The-Chamber-Of-Secrets-Original-S_W0QQitemZ330000921552QQcategoryZ307QQcmdZViewItem</ViewItemURLForNaturalSearch>
+      <ListingType>Chinese</ListingType>
+      <GalleryURL>http://thumbs.ebaystatic.com/pict/330000921552.jpg</GalleryURL>
+      <PrimaryCategoryID>307</PrimaryCategoryID>
+      <PrimaryCategoryName>Music:CDs</PrimaryCategoryName>
+      <BidCount>1</BidCount>
+      <ConvertedCurrentPrice currencyID="USD">3.9</ConvertedCurrentPrice>
+      <ListingStatus>Active</ListingStatus>
+      <TimeLeft>P6DT23H42M12S</TimeLeft>
+      <Title>Harry Potter And The Chamber Of Secrets - Original S...</Title>
+      <ShippingCostSummary>
+        <ShippingServiceCost currencyID="USD">2.99</ShippingServiceCost>
+        <ShippingType>Flat</ShippingType>
+      </ShippingCostSummary>
+      <WatchCount>2</WatchCount>
+    </Item>
+    <Item>
+      <ItemID>170000840407</ItemID>
+      <EndTime>2009-09-06T00:34:42.000Z</EndTime>
+      <ViewItemURLForNaturalSearch>http://cgi.ebay.com/Harry-Potter-And-The-Chamber-Of-Secrets-Original-S_W0QQitemZ170000840407QQcategoryZ307QQcmdZViewItem</ViewItemURLForNaturalSearch>
+      <ListingType>Chinese</ListingType>
+      <PrimaryCategoryID>307</PrimaryCategoryID>
+      <PrimaryCategoryName>Music:CDs</PrimaryCategoryName>
+      <BidCount>1</BidCount>
+      <ConvertedCurrentPrice currencyID="USD">5.0</ConvertedCurrentPrice>
+      <ListingStatus>Active</ListingStatus>
+      <TimeLeft>P729DT53M55S</TimeLeft>
+      <Title>Harry Potter And The Chamber Of Secrets - Original S...</Title>
+      <ShippingCostSummary>
+        <ShippingType>NotSpecified</ShippingType>
+      </ShippingCostSummary>
+      <WatchCount>0</WatchCount>
+    </Item>
+  </ItemArray>
+</FindPopularItemsResponse>
