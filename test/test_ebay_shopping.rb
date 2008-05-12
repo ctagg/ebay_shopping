@@ -22,23 +22,29 @@ class TestEbayShopping < Test::Unit::TestCase
   # 
   # EbayShoppingTest::Request tests
   # 
-  def test_should_get_configs_from_yaml_config_file_and_cache_result
+  def test_should_get_configs_from_given_yaml_file
     EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
     YAML.expects(:load_file).with(regexp_matches(/ebay.yml/)).returns({:production => {:app_id => "foo123"}})
-    EbayShopping::Request.config_params
-    EbayShopping::Request.config_params # getting the config_params again should use the result stored in the class variable
+    EbayShopping::Request.config_params("/some/path/to/ebay.yml")
+  end
+  
+  def test_should_get_configs_from_yaml_config_file_and_cache_result
+    EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
+    YAML.expects(:load_file).returns({:production => {:app_id => "foo123"}})
+    EbayShopping::Request.config_params("/some/path/to/ebay.yml")
+    EbayShopping::Request.config_params("/some/path/to/ebay.yml") # getting the config_params again should use the result stored in the class variable
   end
   
   def test_should_use_production_settings_from_config_file_by_default
     EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
-    YAML.expects(:load_file).with(regexp_matches(/ebay.yml/)).returns({:production => {:app_id => "foo123", :affiliate_id => "foo789"}, :development => {:app_id => "456bar"}})
-    assert_equal({:app_id => "foo123", :affiliate_id => "foo789"}, EbayShopping::Request.config_params)
+    YAML.stubs(:load_file).returns({:production => {:app_id => "foo123", :affiliate_id => "foo789"}, :development => {:app_id => "456bar"}})
+    assert_equal({:app_id => "foo123", :affiliate_id => "foo789"}, EbayShopping::Request.config_params("/some/path/to/ebay.yml"))
   end
   
-  def test_should_use_environment_specific_settings_from_config_file_if_they_exist
+  def test_should_allow_environment_to_be_specified_for_config_file
     EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
     YAML.expects(:load_file).with(regexp_matches(/ebay.yml/)).returns({:production => {:app_id => "foo123"}, :test => {:app_id => "456bar"}})
-    assert_equal "456bar", EbayShopping::Request.config_params[:app_id]
+    assert_equal "456bar", EbayShopping::Request.config_params("/some/path/to/ebay.yml", :test)[:app_id]
   end  
   
   def test_should_have_callname_and_call_params_accessors
@@ -363,7 +369,7 @@ class TestEbayShopping < Test::Unit::TestCase
   end
   
   def test_should_return_formatted_time_left
-    dummy_time = Time.now + 3.days + 4.hours + 32.minutes + 2.seconds
+    dummy_time = Time.now + ((3*24 + 4)*60 + 32)*60+1
     item = EbayShopping::Item.new("ItemID" => "foo123", "EndTime"=>dummy_time.xmlschema)
     assert_equal "3 days, 4 hours, 32 minutes", item.time_left
   end

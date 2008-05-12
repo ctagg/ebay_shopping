@@ -1,8 +1,12 @@
 # TODO: 
 # -- Add hook and info level logging if request generates warning
 # -- Add support for FindHalfProducts, FindPopularSearches, FindProducts, FindReviewsAndGuides, GetCategoryInfo, GeteBayTime, GetItemStatus, GetShippingCosts, GetUserProfile
-# -- Add possibility to have different affiliates for different countries
 # -- Add some documentation
+require 'yaml'
+require 'time'
+require 'cgi'
+require 'net/http'
+require 'xmlsimple'
 
 module EbayShopping
   EBAY_SHOPPING_API_URL     = "open.api.ebay.com"
@@ -47,7 +51,7 @@ module EbayShopping
   class Request
     attr_reader   :affiliate_id, :affiliate_partner, :affiliate_shopper_id, :app_id, :callname, :call_params, :site_id, :repeat_call
     @@config_params = nil # initialize config params class variable
-    
+    # @@env = nil
     def initialize(callname, params={})
       @callname             = callname
       @site_id              = params.delete(:site_id) || self.class.config_params[:site_id]
@@ -60,10 +64,10 @@ module EbayShopping
     end
     
     # Get config params from YAML config file stored in app config folder
-    def self.config_params
+    def self.config_params(yaml_file=nil, env=nil)
       return @@config_params if @@config_params
-      all_params = YAML.load_file("#{RAILS_ROOT}/config/ebay.yml")
-      @@config_params = all_params[RAILS_ENV.to_sym] || all_params[:production]
+      all_params = YAML.load_file(yaml_file)
+      @@config_params = all_params[env] || all_params[:production]
     end
     
     # The response method instantiates a response object of appropriate class, i.e. :find_items_advanced generates FindItemsAdvancedResponse.
@@ -71,11 +75,11 @@ module EbayShopping
     # the response
     def response    
       ebay_response = call(url_from(callname, call_params))
-      "EbayShopping::#{callname.to_s.camelize}Response".constantize.new(ebay_response, self) 
+      constantize("EbayShopping::#{camelize(callname.to_s)}Response").new(ebay_response, self) 
     rescue InternalTimeoutError # try a second time if ebay returns an internal timeout error
       ebay_response = call(url_from(callname, call_params))
       @repeat_call = true # set repeat_call flag so we can raise SystemError if internal timeout on this second call
-      "EbayShopping::#{callname.to_s.camelize}Response".constantize.new(ebay_response, self) 
+      constantize("EbayShopping::#{camelize(callname.to_s)}Response").new(ebay_response, self) 
     end
     
     def site_name
@@ -117,7 +121,7 @@ module EbayShopping
     
     # Generates ebay request URL from the rubyized form of the ebay method. Converts the call parameters into a key=value pair
     def url_from(method, params={})
-      base_url = "http://#{EBAY_SHOPPING_API_URL + EBAY_SHOPPING_API_PATH}?version=#{EBAY_API_VERSION}&appid=#{app_id}&callname=#{method.to_s.camelize}&"
+      base_url = "http://#{EBAY_SHOPPING_API_URL + EBAY_SHOPPING_API_PATH}?version=#{EBAY_API_VERSION}&appid=#{app_id}&callname=#{camelize(method.to_s)}&"
       config_queries = affiliate_partner&&affiliate_id ? "trackingpartnercode=#{affiliate_partner}&trackingid=#{affiliate_id}&affiliateuserid=#{affiliate_shopper_id}&" : "" # add affiliate_id and partner if set, otherwise nothing
       siteid_query = site_id ? "siteid=#{site_id}&" : ""
       @url = base_url + siteid_query + config_queries + _query_params_from(params)
@@ -127,13 +131,13 @@ module EbayShopping
     # NB we sort the items in alpha order before joining them so the order is consistent, allowing us to ensure the same request always generates the same url (important if we cache)
     def _query_params_from(params) #:nodoc:
       query_params = params.empty? ? "" : params.delete_if { |k,v| v.nil? }.collect  do |i|
-        "#{i[0].to_s.camelize}=" + (i[1].is_a?(Array) ? i[1] : [i[1]]).collect{ |v| CGI::escape(v.to_s).gsub('+', '%20')}.join(',')
+        "#{camelize(i[0].to_s)}=" + (i[1].is_a?(Array) ? i[1] : [i[1]]).collect{ |v| CGI::escape(v.to_s).gsub('+', '%20')}.join(',')
       end.sort.join("&")       
     end
     
     def _http_get(url) #:nodoc:
       response = nil 
-      RAILS_DEFAULT_LOGGER.debug "********Ebay Shopping API request = #{url}"
+      # RAILS_DEFAULT_LOGGER.debug "********Ebay Shopping API request = #{url}"
       url = URI.parse(url)
       request = Net::HTTP.new(url.host, url.port)
       request.read_timeout = 5 # set timeout at 5 seconds
@@ -143,8 +147,22 @@ module EbayShopping
       rescue Timeout::Error
         raise TimeoutError, "Ebay is currently unavailable. Please try again later" # i.e. raise EbayShopping::TimeoutError
       end
-      RAILS_DEFAULT_LOGGER.debug "********Ebay Shopping API response = #{response.inspect}. #{response.body if response.respond_to?(:body)}"
+      # RAILS_DEFAULT_LOGGER.debug "********Ebay Shopping API response = #{response.inspect}. #{response.body if response.respond_to?(:body)}"
       response.body
+    end
+    
+    private
+    # Nicked from Rails. Converts strings to UpperCamelCase
+    def camelize(lower_case_and_underscored_word)
+      lower_case_and_underscored_word.to_s.gsub(/\/(.?)/) { "::" + $1.upcase }.gsub(/(^|_)(.)/) { $2.upcase }
+    end
+    
+    # Nicked from Rails. Converts string to constant
+    def constantize(camel_cased_word)
+      unless /\A(?:::)?([A-Z]\w*(?:::[A-Z]\w*)*)\z/ =~ camel_cased_word
+        raise NameError, "#{camel_cased_word.inspect} is not a valid constant name!"
+      end
+      Object.module_eval("::#{$1}", __FILE__, __LINE__)
     end
   end
 
@@ -253,7 +271,7 @@ module EbayShopping
                 :title
     def initialize(params)
       @all_params = params
-      params.each_key { |p| self.instance_variable_set("@#{p.underscore}", params[p]) if self.respond_to?(p.underscore.to_sym) }
+      params.each_key { |p| self.instance_variable_set("@#{underscore(p)}", params[p]) if self.respond_to?(underscore(p).to_sym) }
     end
     
     # Utility method which allows access to original params, especially those that haven't been converted into instance variables, so 
@@ -263,6 +281,15 @@ module EbayShopping
       all_params[param_name]
     end
     
+    private
+    # Converts camelcased word to underscore one. Nicked from Rails
+    def underscore(camel_cased_word)
+      camel_cased_word.to_s.gsub(/::/, '/').
+        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+        gsub(/([a-z\d])([A-Z])/,'\1_\2').
+        tr("-", "_").
+        downcase
+    end
   end
   
   # 
