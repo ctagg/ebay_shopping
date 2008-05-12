@@ -79,24 +79,23 @@
 	<p><pre class='syntax'>
 <span class="ident">require</span> <span class="punct">'</span><span class="string">ebay_shopping</span><span class="punct">'</span>
 
-<span class="ident">request</span> <span class="punct">=</span> <span class="constant">EbayShopping</span><span class="punct">::</span><span class="constant">Request</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:find_items</span><span class="punct">,</span> <span class="punct">{</span><span class="symbol">:query_keywords</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">chevrolet camaro</span><span class="punct">&quot;})</span> <span class="comment"># use &quot;ruby-ized&quot; version of Ebay API calls and params</span>
+<span class="ident">request</span> <span class="punct">=</span> <span class="constant">EbayShopping</span><span class="punct">::</span><span class="constant">Request</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:find_items</span><span class="punct">,</span> <span class="punct">{</span><span class="symbol">:query_keywords</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">chevrolet camaro</span><span class="punct">&quot;})</span> 
+<span class="comment"># use &quot;ruby-ized&quot; version of Ebay API calls and params</span>
 
 <span class="ident">response</span> <span class="punct">=</span> <span class="ident">request</span><span class="punct">.</span><span class="ident">response</span>
 
 <span class="ident">items_for_sale</span> <span class="punct">=</span> <span class="ident">response</span><span class="punct">.</span><span class="ident">items</span>
 
 <span class="ident">items_for_sale</span><span class="punct">.</span><span class="ident">first</span><span class="punct">.</span><span class="ident">title</span> <span class="comment"># =&gt; &quot;Chevrolet Camaro&quot;</span>
+
+<span class="ident">items_for_sale</span><span class="punct">.</span><span class="ident">first</span><span class="punct">.</span><span class="ident">view_item_url_for_natural_search</span> 
+<span class="comment"># =&gt; &quot;http://cgi.ebay.com/Chevrolet-Camaro_W0QQitemZ290197239377QQcategoryZ6161QQcmdZViewItemQQ&quot;</span>
+
+<span class="ident">items_for_sale</span><span class="punct">.</span><span class="ident">first</span><span class="punct">.</span><span class="ident">gallery_url</span> <span class="comment"># =&gt; &quot;http://thumbs.ebaystatic.com/pict/290197239377.jpg&quot;</span>
+
+<span class="ident">items_for_sale</span><span class="punct">.</span><span class="ident">first</span><span class="punct">.</span><span class="ident">converted_current_price</span><span class="punct">.</span><span class="ident">to_s</span> <span class="comment"># =&gt; &quot;$38000.00&quot;</span>
+<span class="punct">...</span><span class="ident">etc</span>
 </pre></p>
-
-
-	<p>items_for_sale.first.view_item_url_for_natural_search # =&gt; &#8220;http://cgi.ebay.com/Chevrolet-Camaro_W0QQitemZ290197239377QQcategoryZ6161QQcmdZViewItemQQ&#8221;</p>
-
-
-	<p>items_for_sale.first.gallery_url # =&gt; &#8220;http://thumbs.ebaystatic.com/pict/290197239377.jpg&#8221;</p>
-
-
-	<p>items_for_sale.first.converted_current_price.to_s # =&gt; &#8221;$38000.00&#8221; 
-...etc</p>
 
 
 	<h2>Demonstration of usage</h2>
@@ -120,28 +119,7 @@
 	<p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups">8b: Submit patch to Google Groups</a>, use the Google Group above.</p>
 
 
-	<p>The trunk repository is <code>svn://rubyforge.org/var/svn/ebay_shopping/trunk</code> for anonymous access.</p>
-
-
-	<p><span class="caps">OOOORRRR</span></p>
-
-
-	<p>You can fetch the source from either:</p>
-
-
-	<ul>
-	<li>rubyforge: <span class="caps">MISSING IN ACTION</span></li>
-	</ul>
-
-
-	<p><span class="caps">TODO</span> &#8211; You can not created a RubyForge project, OR have not run <code>rubyforge config</code>
-yet to refresh your local rubyforge data with this projects&#8217; id information.</p>
-
-
-	<p>When you do this, this message will magically disappear!</p>
-
-
-	<p>Or you can hack website/index.txt and make it all go away!!</p>
+	<p>You can fetch the source from:</p>
 
 
 	<ul>
@@ -150,13 +128,6 @@ yet to refresh your local rubyforge data with this projects&#8217; id informatio
 
 
 <pre>git clone git://github.com/ctagg/ebay_shopping.git</pre>
-
-	<h3>Build and test instructions</h3>
-
-
-<pre>cd ebay_shopping
-rake test
-rake install_gem</pre>
 
 	<h2>License</h2>
 

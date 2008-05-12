@@ -63,11 +63,30 @@ module EbayShopping
       @call_params          = params
     end
     
-    # Get config params from YAML config file
-    def self.config_params(yaml_file=nil, env=nil)
+    # This method sets up the config params from YAML config file or a hash. 
+    # This only needs to be done once, and so should normally be done when
+    # the applicaton starts (e.g. in the envirnoment file in a Rails app).
+    #  
+    # The yaml file approach is designed to allow different environments 
+    # (e.g. production, development, etc), with, potentially different values 
+    # for each environment (if you only set the production environment, or
+    # don't specify the environment when supplying the file path, production)
+    # will be assumed (an example of the yaml file can be seen in ebay.yml.tpl 
+    # in the script directory of this gem).
+    # 
+    # To set the config params by hash just requires to pass a hash of 
+    # key-value pairs with :app_id => "your_ebay_app_id" the only required
+    # one. if you supply affiliate info, this will be used when constructing 
+    # the calls (and hence also in the URLs returned by ebay). Environments
+    # are ignored if a hash is supplied.
+    def self.config_params(yaml_file_path_or_hash=nil, env=nil)
       return @@config_params if @@config_params
-      all_params = YAML.load_file(yaml_file)
-      @@config_params = all_params[env] || all_params[:production]
+      if yaml_file_path_or_hash.is_a?(Hash)
+        @@config_params = yaml_file_path_or_hash 
+      else
+        all_params = YAML.load_file(yaml_file_path_or_hash)
+        @@config_params = all_params[env] || all_params[:production]
+      end
     end
     
     # The response method instantiates a response object of appropriate class, i.e. :find_items_advanced generates FindItemsAdvancedResponse.

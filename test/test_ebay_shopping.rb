@@ -28,6 +28,14 @@ class TestEbayShopping < Test::Unit::TestCase
     EbayShopping::Request.config_params("/some/path/to/ebay.yml")
   end
   
+  def test_should_get_configs_from_given_hash
+    EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
+    YAML.expects(:load_file).never
+    EbayShopping::Request.config_params({:app_id => "foo123", :affiliate_id => "456bar"})
+    assert_equal "foo123", EbayShopping::Request.config_params[:app_id]
+    assert_equal "456bar", EbayShopping::Request.config_params[:affiliate_id]
+  end
+  
   def test_should_get_configs_from_yaml_config_file_and_cache_result
     EbayShopping::Request.class_eval("@@config_params = nil") # reset config params
     YAML.expects(:load_file).returns({:production => {:app_id => "foo123"}})

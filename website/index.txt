@@ -32,21 +32,23 @@ h2. The basics
 <pre syntax="ruby">
 require 'ebay_shopping'
 
-request = EbayShopping::Request.new(:find_items, {:query_keywords => "chevrolet camaro"}) # use "ruby-ized" version of Ebay API calls and params
+request = EbayShopping::Request.new(:find_items, {:query_keywords => "chevrolet camaro"}) 
+# use "ruby-ized" version of Ebay API calls and params
 
 response = request.response
 
 items_for_sale = response.items
 
 items_for_sale.first.title # => "Chevrolet Camaro"
-</pre>
 
-items_for_sale.first.view_item_url_for_natural_search # => "http://cgi.ebay.com/Chevrolet-Camaro_W0QQitemZ290197239377QQcategoryZ6161QQcmdZViewItemQQ"
+items_for_sale.first.view_item_url_for_natural_search 
+# => "http://cgi.ebay.com/Chevrolet-Camaro_W0QQitemZ290197239377QQcategoryZ6161QQcmdZViewItemQQ"
 
 items_for_sale.first.gallery_url # => "http://thumbs.ebaystatic.com/pict/290197239377.jpg"
 
 items_for_sale.first.converted_current_price.to_s # => "$38000.00"
 ...etc
+</pre>
 
 h2. Demonstration of usage
 
@@ -62,35 +64,11 @@ h2. How to submit patches
 
 Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
 
-You can fetch the source from either:
-
-<% if rubyforge_project_id %>
-
-* rubyforge: "http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>":http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>
-
-<pre>git clone git://rubyforge.org/ebay_shopping.git</pre>
-
-<% else %>
-
-* rubyforge: MISSING IN ACTION
-
-TODO - You can not created a RubyForge project, OR have not run <code>rubyforge config</code>
-yet to refresh your local rubyforge data with this projects' id information.
-
-When you do this, this message will magically disappear!
-
-<% end %>
+You can fetch the source from:
 
 * github: "http://github.com/ctagg/ebay_shopping/tree/master":http://github.com/ctagg/ebay_shopping/tree/master
 
 <pre>git clone git://github.com/ctagg/ebay_shopping.git</pre>
-
-h3. Build and test instructions
-
-<pre>cd ebay_shopping
-rake test
-rake install_gem</pre>
-
 
 h2. License
 

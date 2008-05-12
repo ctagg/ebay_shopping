@@ -1,5 +1,4 @@
 == 0.1.0 2008-05-12
-
 * 1 major enhancement:
   * Converted to gem from Rails plugin
 
@@ -24,4 +23,4 @@ March 2
 	* Changed name of cached_response to cached_xml_response. cached_response is better name for a public method, which might return Response object, if there's a cached_xml_response, nil otherwise. Allows loading of pages to be speeded up, with queries perhaps being triggered on demand (and then cached) or by js 
 
 * January 10, 2008
-	* First checkin on plugin
+	* First checkin of plugin

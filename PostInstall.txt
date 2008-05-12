@@ -1,7 +1,6 @@
+ebay_shopping successfully installed!
+For more information on ebay_shopping, see http://ebayshopping.rubyforge.org
 
-For more information on ebay_shopping, see http://ebay_shopping.rubyforge.org
-
-NOTE: Change this information in PostInstall.txt 
-You can also delete it if you don't want it.
-
-
+If you wish to set up your ebay config info (app_id, affiliate info, etc) 
+using a YAML config file copy the following into a new file and load it with
+EbayShopping::Request.config_params("/some/path/to/ebay.yml")
