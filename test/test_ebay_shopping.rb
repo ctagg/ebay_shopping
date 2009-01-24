@@ -101,6 +101,15 @@ class TestEbayShopping < Test::Unit::TestCase
     request.send(:call, "http://some.url")
   end
   
+  def test_should_return_cached_response_if_it_exists
+    cached_response = stub
+    request = new_ebay_request
+    request.expects(:cached_xml_response).returns(cached_response)
+    request.expects(:_http_get).never
+    
+    assert_equal cached_response, request.send(:call, "http://some.url")
+  end
+  
   def test_should_check_error_cache_when_call_is_made
     request = new_ebay_request
     request.stubs(:_http_get).returns(@find_items_response)

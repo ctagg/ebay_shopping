@@ -113,7 +113,8 @@ module EbayShopping
     # the DB or file system) by calling #cached_response before making the call, and passing the response to #cache_response after making it.
     def call(url)
       check_error_cache
-      return cached_xml_response if cached_xml_response
+      cached_response = cached_xml_response
+      return cached_response if cached_response
       fresh_response = _http_get(url)
       cache_response(fresh_response)
       fresh_response

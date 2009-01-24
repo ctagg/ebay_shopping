@@ -2,7 +2,6 @@ h1. ebay_shopping
 
 h1. &#x2192; 'ebay_shopping'
 
-
 h2. What
 
 A Ruby library for the fast-and-simple ebay Shopping API. For details see the Introduction, or the README file. There's also a blog post detailing usage at: "http://pushrod.wordpress.com/2008/01/13/a-rubyonrails-library-for-the-ebay-shopping-api/":http://pushrod.wordpress.com/2008/01/13/a-rubyonrails-library-for-the-ebay-shopping-api/
