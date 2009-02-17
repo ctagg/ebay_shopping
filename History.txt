@@ -1,6 +1,8 @@
 == 0.1.1 2009-01-24
 * Bugfix:
   * #cached_xml_response was being called twice if there was a cached response
+* 1 minor enhancement:
+	* Added gemspec
 
 == 0.1.0 2008-05-12
 * 1 major enhancement:

@@ -4,10 +4,10 @@
 
 == DESCRIPTION:
 
-Ebay_Shopping Plugin
+Ebay_Shopping Gem
 ===================
 
-The ebay_shopping plugin is a RubyonRails library for Ebay's Shopping API (http://developer.ebay.com/products/shopping/). 
+The ebay_shopping gem is a Ruby library for Ebay's Shopping API (http://developer.ebay.com/products/shopping/). 
 Unlike the trading API (http://developer.ebay.com/products/trading/), the shopping API is only for retrieval of information, not
 for posting items, or bidding on them. 
 
@@ -20,7 +20,12 @@ community site. It's still in development, and news of updates will be posted at
 Installation
 ============
 
-To install, simply run the usual: script/plugin install http://ebay-shopping.googlecode.com/svn/trunk/ ebay_shopping
+To install, grab from github:
+
+gem sources -a http://gems.github.com # if you haven't done this in the past for other gems hosted at github
+sudo gem install ctagg-ebay_shopping
+
+simply run the usual: script/plugin install http://ebay-shopping.googlecode.com/svn/trunk/ ebay_shopping
 
 Then from the root of your rails app run ruby vendor/plugins/ebay_shopping/install.rb. 
 
