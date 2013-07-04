@@ -321,6 +321,7 @@ module EbayShopping
     attr_reader :bid_count,
                 :description,
                 :gallery_url,
+                :picture_url,
                 :item_id,
                 :primary_category_name,
                 :view_item_url_for_natural_search
