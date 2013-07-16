@@ -11,7 +11,7 @@ require 'xmlsimple'
 module EbayShopping
   EBAY_SHOPPING_API_URL     = "open.api.ebay.com"
   EBAY_SHOPPING_API_PATH    = "/shopping"
-  EBAY_API_VERSION          = 547 # version of API when this version of shopping library was written
+  EBAY_API_VERSION          = 659 # 547 was the version of API when this version of shopping library was written
   EBAY_SITES                = { 15  => "Australia",
                                 16  => "Austria",
                                 123 => "Belgium (Dutch)",
@@ -321,6 +321,7 @@ module EbayShopping
     attr_reader :bid_count,
                 :description,
                 :gallery_url,
+                :picture_url,
                 :item_id,
                 :primary_category_name,
                 :view_item_url_for_natural_search
